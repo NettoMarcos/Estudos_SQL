@@ -159,3 +159,34 @@ INSERT INTO LIVROS VALUES('Estacio querido', 'Geraldo Francisco', 'M',310, 'Insi
 INSERT INTO LIVROS VALUES('Pra Sempre Amigas', 'Leda Silva', 'F',510, 'Insignia', 78.98, 'ES', 2011);
 INSERT INTO LIVROS VALUES('Copas Inesqueciveis', 'Marco Alcantara', 'M',200, 'Larson', 130.98, 'RS', 2018);
 INSERT INTO LIVROS VALUES('O Poder da Mente', 'Clara Mafra', 'F',120, 'Continetal', 56.58, 'SP', 2017);
+
+/* 1- trazer todos os dados. -evitar essa utilização-)*/
+
+select * from livros;
+
+/* 2- trazer o nome do livro e o nome da editora*/
+
+SELECT TITULO, EDITORA FROM LIVROS;
+
+/* 3 - trazer o nome do livro e a uf dos livros publicados por autores do sexo masculino.*/
+
+SELECT TITULO, UF FROM LIVROS WHERE SEXO = 'M';
+
+/*Verificando se os dados estão corretos*/
+SELECT AUTOR, SEXO, TITULO, UF FROM LIVROS WHERE SEXO = 'M';
+
+/* 4- Trazer o nome do livro e o número de páginas dos livros publicados por autores do sexo feminino*/
+
+SELECT TITULO, PAGINAS FROM LIVROS WHERE SEXO = 'F';
+
+/*5 - Trazer os valores dos livros das editoras de São Paulo. */
+
+SELECT VALOR FROM LIVROS WHERE UF = 'SP';
+
+/*6 - Trazer os dados dos autores do sexo masculino que tiverem livros publicados por São paulo ou Rio de Janeiro*/
+
+/*tambem vai exibir as autoras femininas que moram no RJ*/
+SELECT UF, AUTOR, SEXO FROM LIVROS WHERE SEXO = 'M' AND UF = 'SP' OR UF = 'RJ';
+
+/*jeito certo*/
+SELECT UF, AUTOR, SEXO FROM LIVROS WHERE SEXO = 'M' AND (UF = 'SP' OR UF = 'RJ');
